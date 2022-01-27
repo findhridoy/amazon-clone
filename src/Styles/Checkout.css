@@ -1,0 +1,13 @@
+.checkout {
+  display: flex;
+  padding: 20px;
+  background: #fff;
+  height: max-content;
+}
+.checkout__ad {
+  width: 1050px;
+}
+.checkout__ad > img {
+  width: 100%;
+  height: 130px;
+}

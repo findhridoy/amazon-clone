@@ -1,0 +1,6 @@
+.home__image img {
+  mask-image: linear-gradient(to bottom, var(--dark-color), var(--transparent));
+  object-fit: cover;
+  margin-top: 0;
+  /* height: 100vh; */
+}
