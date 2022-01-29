@@ -1,0 +1,60 @@
+.categories {
+  display: grid;
+  gap: 1rem;
+}
+.categories__card {
+  background-color: var(--white-alt-color);
+  padding: var(--x-1);
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+.categories__title {
+  font-size: var(--h3-font);
+  font-weight: var(--semi-bold);
+  color: var(--dark-color);
+  text-transform: capitalize;
+}
+.categories__image {
+  overflow: var(--hidden);
+}
+.categories__image img {
+  height: 12rem;
+  width: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+.categories__card:hover .categories__image img {
+  transform: var(--scale);
+}
+.categories__link--text {
+  font-size: var(--small-font);
+}
+.categories__link--text:hover {
+  text-decoration: underline;
+}
+
+/*====================== MEDIA QUERIES =====================*/
+/* ------------- For Medium Device ------------- */
+@media screen and (min-width: 576px) {
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ------------- For Tablet, Laptop ------------- */
+@media screen and (min-width: 768px) {
+  .categories {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ------------- For Large Device ------------- */
+@media screen and (min-width: 1024px) {
+  .categories {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* ------------- For Extra Large Device ------------- */
+@media screen and (min-width: 1200px) {
+}
