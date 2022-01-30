@@ -1,5 +1,4 @@
 import React from "react";
-import ad from "../Images/ad.png";
 
 const Checkout = () => {
   return (

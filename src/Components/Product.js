@@ -1,18 +1,27 @@
+import { Button } from "@material-ui/core";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React from "react";
-import product from "../Images/amazon_product.png";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
-const Product = () => {
+const Product = ({ product }) => {
   return (
-    <div className="product">
-      <div className="product__info">
-        <p className="product__title">Product title</p>
-        <p className="product__price">
-          <small>$</small>
-          <strong>15.99</strong>
-        </p>
-        <div className="product__rating">⭐</div>
-        <img src={product} alt="" />
-        <button>Add to Basket</button>
+    <div className="product__card">
+      <div className="product__card--header">
+        <NavLink to={"/"} className="product__card--title">
+          {product?.title}
+        </NavLink>
+        <div className="product__card--price">
+          <span>$</span>
+          <strong>{product?.price}</strong>
+        </div>
+        <div className="product__card--rating">⭐⭐⭐⭐</div>
+      </div>
+      <div className="product__card--footer">
+        <img src={product?.image} alt="Product Img" />
+        <Button variant="contained">
+          <ShoppingCartIcon />
+          Add to Basket
+        </Button>
       </div>
     </div>
   );
