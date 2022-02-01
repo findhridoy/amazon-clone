@@ -204,9 +204,11 @@ section {
 /*================ CSS ALL FILES ================*/
 @import "./Styles/Header.css";
 @import "./Styles/Home.css";
+@import "./Styles/BannerSlider.css";
 @import "./Styles/Categories.css";
 @import "./Styles/ProductByCategory.css";
 @import "./Styles/Product.css";
+@import "./Styles/ProductDetails.css";
 @import "./Styles/Checkout.css";
 
 ::-webkit-scrollbar {

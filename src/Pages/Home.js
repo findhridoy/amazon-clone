@@ -1,9 +1,9 @@
 import React from "react";
+import BannerSlider from "../Components/BannerSlider";
 import Categories from "../Components/Categories";
 import Product from "../Components/Product";
 import { useLimitProduct } from "../Hooks/useLimitProduct";
 import { useSpecificProduct } from "../Hooks/useSpecificProduct";
-import heroImage from "../Images/hero-image.jpg";
 import Layout from "../Layout/Layout";
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
     <Layout>
       <div className="home__section">
         <div className="home__image">
-          <img src={heroImage} alt="Hero Img" />
+          <BannerSlider />
         </div>
         <main className="main__container">
           <div className="container">
@@ -27,7 +27,7 @@ const Home = () => {
                 ))}
               </div>
               <div className="main__single--products">
-                <Product product={specificProducts} />
+                {products?.length > 0 && <Product product={specificProducts} />}
               </div>
             </section>
           </div>

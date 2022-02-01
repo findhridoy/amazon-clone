@@ -7,7 +7,7 @@ const Product = ({ product }) => {
   return (
     <div className="product__card">
       <div className="product__card--header">
-        <NavLink to={"/"} className="product__card--title">
+        <NavLink to={`/product/${product.id}`} className="product__card--title">
           {product?.title}
         </NavLink>
         <div className="product__card--price">

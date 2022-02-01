@@ -7,7 +7,7 @@ export const useLimitProduct = (limit) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProductByCategory = async () => {
+    const fetchLimitProduct = async () => {
       try {
         const { data } = await axios.get(
           `https://fakestoreapi.com/products?limit=${limit}`
@@ -20,7 +20,7 @@ export const useLimitProduct = (limit) => {
         setLoading(false);
       }
     };
-    fetchProductByCategory();
+    fetchLimitProduct();
   }, [limit]);
   return { loading, error, products };
 };

@@ -1,15 +1,12 @@
 .home__section {
   position: relative;
 }
-.home__image > img {
-  mask-image: linear-gradient(to bottom, var(--dark-color), var(--transparent));
-  object-fit: cover;
-}
 
 .main__container {
   position: absolute;
-  top: 50%;
+  top: 65%;
   width: 100%;
+  z-index: var(--z-9);
 }
 .main__products--container {
   padding: var(--x-1-75) 0;
@@ -21,6 +18,7 @@
 .main__single--products {
   margin-top: var(--x-1);
 }
+
 /*====================== MEDIA QUERIES =====================*/
 /* ------------- For Medium Device ------------- */
 @media screen and (min-width: 576px) {

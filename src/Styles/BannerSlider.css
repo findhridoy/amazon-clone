@@ -1,0 +1,13 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide > img {
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, var(--dark-color), var(--transparent));
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    var(--dark-color),
+    var(--transparent)
+  );
+}

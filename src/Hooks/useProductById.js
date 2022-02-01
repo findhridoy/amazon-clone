@@ -1,16 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const useSpecificProduct = (specificID) => {
+export const useProductById = (id) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProductBySpecific = async () => {
+    const fetchProductById = async () => {
       try {
         const { data } = await axios.get(
-          `https://fakestoreapi.com/products/${specificID}`
+          `https://fakestoreapi.com/products/${id}`
         );
         setProducts(data);
         setLoading(false);
@@ -20,7 +20,7 @@ export const useSpecificProduct = (specificID) => {
         setLoading(false);
       }
     };
-    fetchProductBySpecific();
-  }, [specificID]);
+    fetchProductById();
+  }, [id]);
   return { loading, error, products };
 };

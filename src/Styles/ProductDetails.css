@@ -1,0 +1,95 @@
+.productDetails__container {
+  padding: var(--x-1-25);
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-alt);
+}
+.productDetails__image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--x-0-75);
+}
+.productDetails__image img {
+  max-height: 13rem;
+  object-fit: cover;
+}
+.productDetails__category {
+  color: var(--orange-alt-color);
+  font-weight: var(--semi-bold);
+  text-transform: capitalize;
+  font-size: var(--smaller-font);
+}
+.productDetails__category:hover {
+  text-decoration: underline;
+}
+.productDetails__title {
+  font-weight: var(--semi-bold);
+  font-size: var(--h2-font);
+  color: var(--dark-color);
+}
+.productDetails__price {
+  font-weight: var(--bold);
+  font-size: var(--h3-font);
+  color: var(--dark-color);
+}
+.productDetails__description {
+  font-size: var(--normal-font);
+  margin-top: var(--x-0-25);
+  color: var(--gray-color);
+}
+
+.productDetails__data button {
+  background-color: var(--orange-color) !important;
+  border: var(--border);
+  margin-top: var(--x-1-25);
+  border-color: #a88734 #9c7e31 #846a29;
+  color: var(--dark-color);
+  padding: var(--x-0-5) var(--x-0-75);
+  font-size: var(--small-font);
+  text-transform: capitalize;
+  width: 100%;
+}
+
+/*====================== MEDIA QUERIES =====================*/
+/* ------------- For Medium Device ------------- */
+@media screen and (min-width: 576px) {
+}
+
+/* ------------- For Tablet, Laptop ------------- */
+@media screen and (min-width: 768px) {
+  .productDetails__section {
+    display: flex;
+    align-items: center;
+    height: 80vh;
+  }
+  .productDetails__container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    max-width: 100%;
+    height: 100%;
+    align-items: center;
+    box-shadow: none;
+    column-gap: 2rem;
+  }
+  .productDetails__image {
+    justify-content: center;
+    margin-bottom: 0;
+    box-shadow: var(--shadow);
+    height: 25rem;
+  }
+  .productDetails__image img {
+    max-height: 18rem;
+  }
+  .productDetails__data button {
+    padding: var(--x-0-5) var(--x-1);
+    width: initial;
+  }
+}
+
+/* ------------- For Large Device ------------- */
+@media screen and (min-width: 1024px) {
+}
+/* ------------- For Extra Large Device ------------- */
+@media screen and (min-width: 1200px) {
+}

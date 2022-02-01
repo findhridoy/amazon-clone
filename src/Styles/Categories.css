@@ -3,12 +3,12 @@
   gap: 1rem;
 }
 .categories__card {
-  background-color: var(--white-alt-color);
+  background-color: var(--white-color);
   padding: var(--x-1);
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
-  box-shadow: var(--shadow-alt);
+  box-shadow: var(--shadow);
 }
 .categories__title {
   font-size: var(--h3-font);
