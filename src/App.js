@@ -4,6 +4,8 @@ import Checkout from "./Pages/Checkout";
 import Home from "./Pages/Home";
 import ProductByCategory from "./Pages/ProductByCategory";
 import ProductDetails from "./Pages/ProductDetails";
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route exact path="/category/:title" component={ProductByCategory} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signup" component={SignUp} />
       </Switch>
     </>
   );

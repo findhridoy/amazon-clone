@@ -7,84 +7,90 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSearchProduct } from "../Hooks/useSearchProduct";
 import amazon from "../Images/white-logo.png";
+import SearchResult from "./SearchResult";
 
 const Header = () => {
+  const { setSearchKey, searchResultProducts } = useSearchProduct();
   return (
-    <header className="header">
-      <nav className="nav container">
-        <div className="header__logo">
-          <Link to="/">
-            <img src={amazon} alt="Logo" />
-          </Link>
-        </div>
-
-        <NavLink to="/locations" className="header__location">
-          <LocationOnIcon className="location__icon" />
-          <div className="location__name">
-            <span className="location__lineOne">Deliver to</span>
-            <span className="location__lineTwo"> Bangladesh</span>
+    <>
+      <header className="header">
+        <nav className="nav container">
+          <div className="header__logo">
+            <Link to="/">
+              <img src={amazon} alt="Logo" />
+            </Link>
           </div>
-        </NavLink>
 
-        <div className="header__search">
-          <input type="text" />
-          <SearchIcon className="header__searchIcon" />
-        </div>
-        <div className="nav__menu">
-          <ul className="nav__list">
-            <li className="nav__item">
-              <NavLink className="nav__link" to="/">
-                <span className="nav__lineOne">Hello</span>
-                <span className="nav__lineTwo">Sign In</span>
-              </NavLink>
+          <NavLink to="/locations" className="header__location">
+            <LocationOnIcon className="location__icon" />
+            <div className="location__name">
+              <span className="location__lineOne">Deliver to</span>
+              <span className="location__lineTwo"> Bangladesh</span>
+            </div>
+          </NavLink>
+
+          <div className="header__search">
+            <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
+            <SearchIcon className="header__searchIcon" />
+          </div>
+          <div className="nav__menu">
+            <ul className="nav__list">
+              <li className="nav__item">
+                <NavLink className="nav__link" to="/signin">
+                  <span className="nav__lineOne">Hello</span>
+                  <span className="nav__lineTwo">Sign In</span>
+                </NavLink>
+              </li>
+              <li className="nav__item">
+                <NavLink className="nav__link" to="/">
+                  <span className="nav__lineOne">Returns</span>
+                  <span className="nav__lineTwo">& Orders</span>
+                </NavLink>
+              </li>
+              <li className="nav__item">
+                <NavLink to="checkout" className="nav__link--basket">
+                  <ShoppingBasketIcon />
+                  <span className="basketCount">0</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div className="mobile__nav--menu">
+          <ul className="mobile__nav--list">
+            <li className="mobile__nav--item">
+              <IconButton color="primary">
+                <HomeIcon className="mobile__nav--icon" />
+              </IconButton>
             </li>
-            <li className="nav__item">
-              <NavLink className="nav__link" to="/">
-                <span className="nav__lineOne">Returns</span>
-                <span className="nav__lineTwo">& Orders</span>
-              </NavLink>
+            <li className="mobile__nav--item">
+              <IconButton color="primary">
+                <LocationOnIcon className="mobile__nav--icon" />
+              </IconButton>
             </li>
-            <li className="nav__item">
-              <NavLink to="checkout" className="nav__link--basket">
-                <ShoppingBasketIcon />
-                <span className="basketCount">0</span>
-              </NavLink>
+            <li className="mobile__nav--item">
+              <IconButton color="primary">
+                <SearchIcon className="mobile__nav--icon" />
+              </IconButton>
+            </li>
+            <li className="mobile__nav--item">
+              <IconButton color="primary">
+                <AddCircleIcon className="mobile__nav--icon" />
+              </IconButton>
+            </li>
+            <li className="mobile__nav--item">
+              <IconButton color="primary">
+                <PersonIcon className="mobile__nav--icon" />
+              </IconButton>
             </li>
           </ul>
         </div>
-      </nav>
-
-      <div className="mobile__nav--menu">
-        <ul className="mobile__nav--list">
-          <li className="mobile__nav--item">
-            <IconButton color="primary">
-              <HomeIcon className="mobile__nav--icon" />
-            </IconButton>
-          </li>
-          <li className="mobile__nav--item">
-            <IconButton color="primary">
-              <LocationOnIcon className="mobile__nav--icon" />
-            </IconButton>
-          </li>
-          <li className="mobile__nav--item">
-            <IconButton color="primary">
-              <SearchIcon className="mobile__nav--icon" />
-            </IconButton>
-          </li>
-          <li className="mobile__nav--item">
-            <IconButton color="primary">
-              <AddCircleIcon className="mobile__nav--icon" />
-            </IconButton>
-          </li>
-          <li className="mobile__nav--item">
-            <IconButton color="primary">
-              <PersonIcon className="mobile__nav--icon" />
-            </IconButton>
-          </li>
-        </ul>
-      </div>
-    </header>
+      </header>
+      <SearchResult searchResultProducts={searchResultProducts} />
+    </>
   );
 };
 

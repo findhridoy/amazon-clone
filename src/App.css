@@ -16,9 +16,14 @@
   --red-color: hsl(6, 78%, 57%);
   --transparent: transparent;
   --gradient-color: linear-gradient(
-    to right,
-    var(--green-color),
-    hsl(97, 87%, 61%)
+    to top,
+    var( --orange-alt-color),
+    hsla(34, 100%, 88%, 0.993)
+  );
+  --gradient-alt-color: linear-gradient(
+    to top,
+    var( --white-alt-color),
+    var(--white-color)
   );
 
   /* Fonts and Typography --> normal to small screen */ /* 0.0625rem = 1px */
@@ -70,7 +75,7 @@
   --header-height: 3.5rem;
   --radius: 0.2rem;
   --border: 0.0625rem solid;
-  --shadow: 0 0.125rem 0.625rem var(--white-alt-color);
+  --shadow: 0 0.125rem 2rem var(--white-alt-color);
   --shadow-orange: 0 0 0.5rem var(--orange-alt-color);
   --shadow-alt: 0 0.125rem 0.625rem var(--gray-alt-color);
 }
@@ -209,7 +214,9 @@ section {
 @import "./Styles/ProductByCategory.css";
 @import "./Styles/Product.css";
 @import "./Styles/ProductDetails.css";
+@import "./Styles/SearchResult.css";
 @import "./Styles/Checkout.css";
+@import "./Styles/SignUpSignIn.css";
 
 ::-webkit-scrollbar {
   width: 0.6rem;
@@ -224,6 +231,11 @@ section {
   background-color: var(--gray-color);
 }
 
+/* =============== SMALL COMPONENTS ================= */
+.rating .rating__icon .MuiSvgIcon-root{
+  color: var(--orange-alt-color);
+  font-size: var(--h3-font);
+}
 /*====================== MEDIA QUERIES =====================*/
 /* ------------- For Medium Device ------------- */
 @media screen and (min-width: 576px) {

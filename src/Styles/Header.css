@@ -4,7 +4,7 @@
   background-color: var(--dark-blue-color);
   position: fixed;
   top: 0;
-  z-index: var(--z-10);
+  z-index: var(--z-99);
 }
 .nav {
   display: flex;
