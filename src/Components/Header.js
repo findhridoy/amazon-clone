@@ -7,12 +7,19 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useGlobalContext } from "../Context/GlobalContext";
 import { useSearchProduct } from "../Hooks/useSearchProduct";
 import amazon from "../Images/white-logo.png";
 import SearchResult from "./SearchResult";
 
 const Header = () => {
   const { setSearchKey, searchResultProducts } = useSearchProduct();
+
+  // use context
+  const {
+    state: { userInfo, basketItems },
+    signout,
+  } = useGlobalContext();
   return (
     <>
       <header className="header">
@@ -38,10 +45,19 @@ const Header = () => {
           <div className="nav__menu">
             <ul className="nav__list">
               <li className="nav__item">
-                <NavLink className="nav__link" to="/signin">
-                  <span className="nav__lineOne">Hello</span>
-                  <span className="nav__lineTwo">Sign In</span>
-                </NavLink>
+                {userInfo ? (
+                  <button className="nav__link" onClick={() => signout()}>
+                    <span className="nav__lineOne">
+                      Hello {userInfo?.displayName}
+                    </span>
+                    <span className="nav__lineTwo">Sign Out</span>
+                  </button>
+                ) : (
+                  <NavLink className="nav__link" to="/signin">
+                    <span className="nav__lineOne">Hello</span>
+                    <span className="nav__lineTwo">Sign In</span>
+                  </NavLink>
+                )}
               </li>
               <li className="nav__item">
                 <NavLink className="nav__link" to="/">
@@ -52,7 +68,7 @@ const Header = () => {
               <li className="nav__item">
                 <NavLink to="checkout" className="nav__link--basket">
                   <ShoppingBasketIcon />
-                  <span className="basketCount">0</span>
+                  <span className="basketCount">{basketItems?.length}</span>
                 </NavLink>
               </li>
             </ul>

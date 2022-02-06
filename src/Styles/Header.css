@@ -83,6 +83,7 @@
   border-color: var(--transparent);
   padding: 0.1rem var(--x-1);
   transition: var(--transition);
+  background-color: var(--transparent);
 }
 .nav__link .nav__lineOne {
   font-size: var(--smallest-font);

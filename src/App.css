@@ -17,12 +17,12 @@
   --transparent: transparent;
   --gradient-color: linear-gradient(
     to top,
-    var( --orange-alt-color),
+    var(--orange-alt-color),
     hsla(34, 100%, 88%, 0.993)
   );
   --gradient-alt-color: linear-gradient(
     to top,
-    var( --white-alt-color),
+    var(--white-alt-color),
     var(--white-color)
   );
 
@@ -66,7 +66,7 @@
   --z-9: 9;
   --z-10: 10;
   --z-99: 99;
-  --z-100: 100;
+  --z-999: 999;
 
   /* Others */
   --hidden: hidden;
@@ -157,7 +157,7 @@ img {
   overflow: hidden;
 }
 .loader {
-  z-index: var(--z-100);
+  z-index: var(--z-999);
 }
 .error__text {
   font-size: var(--h4-font);
@@ -232,7 +232,7 @@ section {
 }
 
 /* =============== SMALL COMPONENTS ================= */
-.rating .rating__icon .MuiSvgIcon-root{
+.rating .rating__icon .MuiSvgIcon-root {
   color: var(--orange-alt-color);
   font-size: var(--h3-font);
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export const useProductById = (id) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     const fetchProductById = async () => {
@@ -12,7 +12,7 @@ export const useProductById = (id) => {
         const { data } = await axios.get(
           `https://fakestoreapi.com/products/${id}`
         );
-        setProducts(data);
+        setProduct(data);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -22,5 +22,5 @@ export const useProductById = (id) => {
     };
     fetchProductById();
   }, [id]);
-  return { loading, error, products };
+  return { loading, error, product };
 };

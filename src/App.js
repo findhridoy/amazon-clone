@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import GlobalProvider from "./Context/GlobalContext";
 import Checkout from "./Pages/Checkout";
 import Home from "./Pages/Home";
 import ProductByCategory from "./Pages/ProductByCategory";
@@ -9,7 +10,7 @@ import SignUp from "./Pages/SignUp";
 
 function App() {
   return (
-    <>
+    <GlobalProvider>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/category/:title" component={ProductByCategory} />
@@ -18,7 +19,7 @@ function App() {
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
       </Switch>
-    </>
+    </GlobalProvider>
   );
 }
 
