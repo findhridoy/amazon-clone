@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import GlobalProvider from "./Context/GlobalContext";
-import Checkout from "./Pages/Checkout";
+import Basket from "./Pages/Basket";
 import Home from "./Pages/Home";
 import ProductByCategory from "./Pages/ProductByCategory";
 import ProductDetails from "./Pages/ProductDetails";
@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/category/:title" component={ProductByCategory} />
         <Route exact path="/product/:id" component={ProductDetails} />
-        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/basket" component={Basket} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
       </Switch>

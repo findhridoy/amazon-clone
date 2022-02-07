@@ -38,6 +38,7 @@ const ProductDetails = () => {
                 <NavLink
                   className="productDetails__category"
                   to={`/category/${product?.category}`}
+                  exact
                 >
                   {product?.category}
                 </NavLink>

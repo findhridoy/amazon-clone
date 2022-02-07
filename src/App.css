@@ -11,6 +11,7 @@
   --dark-color: hsl(0, 0%, 0%);
   --white-color: hsl(0, 0%, 100%);
   --white-alt-color: hsl(0, 0%, 92%);
+  --body-color: hsl(180, 8%, 92%);
   --gray-color: hsl(0, 0%, 42%);
   --gray-alt-color: hsl(0, 1%, 70%);
   --red-color: hsl(6, 78%, 57%);
@@ -110,6 +111,12 @@ body {
   font-family: var(--Poppins-font);
   font-size: var(--normal-font);
   overflow: overlay;
+  background-color: var(--body-color);
+}
+@media screen and (max-width: 768px) {
+  body {
+    margin: var(--header-height) 0;
+  }
 }
 ul {
   margin: 0;
@@ -215,8 +222,9 @@ section {
 @import "./Styles/Product.css";
 @import "./Styles/ProductDetails.css";
 @import "./Styles/SearchResult.css";
-@import "./Styles/Checkout.css";
 @import "./Styles/SignUpSignIn.css";
+@import "./Styles/Basket.css";
+@import "./Styles/BasketCard.css";
 
 ::-webkit-scrollbar {
   width: 0.6rem;

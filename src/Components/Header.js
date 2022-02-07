@@ -30,7 +30,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <NavLink to="/locations" className="header__location">
+          <NavLink exact to="/locations" className="header__location">
             <LocationOnIcon className="location__icon" />
             <div className="location__name">
               <span className="location__lineOne">Deliver to</span>
@@ -53,20 +53,20 @@ const Header = () => {
                     <span className="nav__lineTwo">Sign Out</span>
                   </button>
                 ) : (
-                  <NavLink className="nav__link" to="/signin">
+                  <NavLink className="nav__link" exact to="/signin">
                     <span className="nav__lineOne">Hello</span>
                     <span className="nav__lineTwo">Sign In</span>
                   </NavLink>
                 )}
               </li>
               <li className="nav__item">
-                <NavLink className="nav__link" to="/">
+                <NavLink className="nav__link" exact to="/">
                   <span className="nav__lineOne">Returns</span>
                   <span className="nav__lineTwo">& Orders</span>
                 </NavLink>
               </li>
               <li className="nav__item">
-                <NavLink to="checkout" className="nav__link--basket">
+                <NavLink exact to="/basket" className="nav__link--basket">
                   <ShoppingBasketIcon />
                   <span className="basketCount">{basketItems?.length}</span>
                 </NavLink>

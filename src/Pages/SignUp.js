@@ -12,7 +12,7 @@ const SignUp = ({ history }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState();
-  const [error, setError] = useState("");
+  let error = [];
 
   //   use context
   const { signup } = useGlobalContext();
@@ -22,24 +22,28 @@ const SignUp = ({ history }) => {
 
     //   basic validation
     if (name === "" || name === " ") {
-      setError("Enter your name");
-    } else if (email === "" || email === " ") {
-      setError("Enter your email");
-    } else if (password === "" || password === " ") {
-      setError("Enter your password");
-    } else if (confirmPassword === "" || confirmPassword === " ") {
-      setError("Re-enter password");
-    } else if (password !== confirmPassword) {
-      setError("Password don't match.");
+      error.push("Enter your name");
+    }
+    if (email === "" || email === " ") {
+      error.push("Enter your email");
+    }
+    if (password === "" || password === " ") {
+      error.push("Enter your password");
+    }
+    if (confirmPassword === "" || confirmPassword === " ") {
+      error.push("Re-enter password");
+    }
+    if (password && password !== confirmPassword) {
+      error.push("Password don't match.");
     } else {
       try {
-        setError("");
+        error = [];
         setLoading(true);
         await signup(email, password, name);
         history.push("/");
         setLoading(false);
-      } catch (error) {
-        setError(error.message);
+      } catch (err) {
+        error.push(err.message);
         setLoading(false);
       }
     }
@@ -54,7 +58,11 @@ const SignUp = ({ history }) => {
             <img src={darkLogo} alt="Dark Logo" />
           </Link>
         </div>
-        <div className="ss__error">{error && <span>{error}</span>}</div>
+        <div className="ss__error">
+          {/* {error?.map((err) => (
+            <span>{err}</span>
+          ))} */}
+        </div>
         <form className="form__container" onSubmit={handleSignUp}>
           <h1 className="form__header--text">Create account</h1>
           <span className="form__group">

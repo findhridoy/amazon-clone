@@ -20,6 +20,7 @@ const Product = ({ product }) => {
         <NavLink
           to={`/product/${product?.id}`}
           className="product__card--title"
+          exact
         >
           {product?.title}
         </NavLink>

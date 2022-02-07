@@ -1,7 +1,7 @@
 .product__card {
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow);
+  /* box-shadow: var(--shadow); */
   background-color: var(--white-color);
   height: 100%;
   justify-content: space-between;

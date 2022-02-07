@@ -2,7 +2,8 @@
   padding: var(--x-1-25);
   max-width: 400px;
   margin: 0 auto;
-  box-shadow: var(--shadow-alt);
+  background-color: var(--white-color);
+  /* box-shadow: var(--shadow-alt); */
 }
 .productDetails__image {
   display: flex;
@@ -71,12 +72,14 @@
     align-items: center;
     box-shadow: none;
     column-gap: 2rem;
+    background-color: var(--transparent);
   }
   .productDetails__image {
     justify-content: center;
     margin-bottom: 0;
-    box-shadow: var(--shadow);
+    background-color: var(--white-color);
     height: 25rem;
+    padding: 0 var(--x-3);
   }
   .productDetails__image img {
     max-height: 18rem;

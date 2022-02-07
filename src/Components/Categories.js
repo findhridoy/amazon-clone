@@ -18,6 +18,7 @@ const Categories = () => {
               to={`/category/${category.title}`}
               className="categories__card"
               key={index}
+              exact
             >
               <h2 className="categories__title">{category.title}</h2>
               <div className="categories__image">

@@ -53,12 +53,12 @@ const GlobalProvider = ({ children }) => {
     });
   };
 
-  // actions: signin user
+  // function: signin user
   const signin = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // actions: signout user
+  // function: signout user
   const signout = () => {
     return signOut(auth);
   };
@@ -90,6 +90,11 @@ const GlobalProvider = ({ children }) => {
     });
   };
 
+  // function: total price
+  const getSubTotal = (basketItems) => {
+    return basketItems?.reduce((ammount, item) => item.price + ammount, 0);
+  };
+
   useEffect(() => {
     localStorage.setItem("basketItems", JSON.stringify(state.basketItems));
   }, [state]);
@@ -102,6 +107,7 @@ const GlobalProvider = ({ children }) => {
     signout,
     addToBasket,
     removeFromBasket,
+    getSubTotal,
   };
   return (
     <GlobalContext.Provider value={value}>
