@@ -129,7 +129,8 @@ a {
   text-decoration: none;
 }
 button,
-input {
+input,
+select {
   border: none;
   outline: none;
   font-size: var(--normal-font);
@@ -177,6 +178,7 @@ section {
   margin-left: var(--x-1);
   margin-right: var(--x-1);
 }
+
 /*====================== MEDIA QUERIES =====================*/
 /* ------------- For Medium Device ------------- */
 @media screen and (min-width: 576px) {
@@ -225,6 +227,7 @@ section {
 @import "./Styles/SignUpSignIn.css";
 @import "./Styles/Basket.css";
 @import "./Styles/BasketCard.css";
+@import "./Styles/ShippingForm.css";
 
 ::-webkit-scrollbar {
   width: 0.6rem;

@@ -10,6 +10,7 @@ import { auth } from "../firebase";
 import Loader from "../Layout/Loader";
 import { globalReducers } from "./GlobalReducer";
 import {
+  ADD_SHIPPING_ADDRESS,
   ADD_TO_BASKET,
   REMOVE_FROM_BASKET,
   RESET_USER,
@@ -23,6 +24,9 @@ const initialState = {
   basketItems: localStorage.getItem("basketItems")
     ? JSON.parse(localStorage.getItem("basketItems"))
     : [],
+  shippingAddress: localStorage.getItem("shippingAddress")
+    ? JSON.parse(localStorage.getItem("shippingAddress"))
+    : null,
 };
 
 // create the context
@@ -95,8 +99,20 @@ const GlobalProvider = ({ children }) => {
     return basketItems?.reduce((ammount, item) => item.price + ammount, 0);
   };
 
+  // acitons: shipping address
+  const getShippingAddress = (address) => {
+    dispatch({
+      type: ADD_SHIPPING_ADDRESS,
+      payload: address,
+    });
+  };
+
   useEffect(() => {
     localStorage.setItem("basketItems", JSON.stringify(state.basketItems));
+    localStorage.setItem(
+      "shippingAddress",
+      JSON.stringify(state.shippingAddress)
+    );
   }, [state]);
   // values
   const value = {
@@ -108,6 +124,7 @@ const GlobalProvider = ({ children }) => {
     addToBasket,
     removeFromBasket,
     getSubTotal,
+    getShippingAddress,
   };
   return (
     <GlobalContext.Provider value={value}>

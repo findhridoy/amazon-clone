@@ -3,10 +3,10 @@ import React from "react";
 import CurrencyFormat from "react-currency-format";
 import BasketCard from "../Components/BasketCard";
 import { useGlobalContext } from "../Context/GlobalContext";
-import ads from "../Images/ads.png";
+import ads from "../Images/ads/ads.png";
 import Layout from "../Layout/Layout";
 
-const Basket = () => {
+const Basket = ({ history }) => {
   const {
     state: { basketItems },
     getSubTotal,
@@ -78,7 +78,12 @@ const Basket = () => {
                   prefix={"$"}
                 />
                 <div className="checkout__btn">
-                  <Button variant="contained">Proceed to checkout</Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => history.push("/shippingAddress")}
+                  >
+                    Proceed to checkout
+                  </Button>
                 </div>
               </div>
             )}

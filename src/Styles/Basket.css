@@ -56,7 +56,7 @@
   border: var(--border);
   border-color: #a88734 #9c7e31 #846a29;
   color: var(--dark-color);
-  padding: var(--x-0-5) var(--x-0-75);
+  padding: var(--x-0-25) var(--x-0-75);
   font-size: var(--small-font);
   text-transform: capitalize;
   width: 100%;

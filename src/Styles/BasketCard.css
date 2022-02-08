@@ -25,6 +25,9 @@
   color: var(--dark-color);
   font-weight: var(--medium);
 }
+.basket__card--title:hover {
+  text-decoration: underline;
+}
 .basket__price {
   font-size: var(--normal-font);
   display: block;

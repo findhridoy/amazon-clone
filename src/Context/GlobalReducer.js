@@ -1,4 +1,5 @@
 import {
+  ADD_SHIPPING_ADDRESS,
   ADD_TO_BASKET,
   REMOVE_FROM_BASKET,
   RESET_USER,
@@ -30,6 +31,12 @@ export const globalReducers = (state, action) => {
       return {
         ...state,
         basketItems: state.basketItems.filter((x) => x.id !== action.payload),
+      };
+
+    case ADD_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;

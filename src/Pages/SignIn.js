@@ -1,48 +1,41 @@
 import { Button } from "@material-ui/core";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import WarningIcon from "@material-ui/icons/Warning";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context/GlobalContext";
 import darkLogo from "../Images/dark-logo.png";
 
 const SignIn = ({ history }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState();
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState("");
 
   //   use context
   const { signin } = useGlobalContext();
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
+  // react hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    //   basic validation
-    if (email === "" || email === " ") {
-      setErrors((prevsValue) => [...prevsValue, "Enter your email"]);
-    } else if (email) {
-      setErrors([]);
-    }
-    if (password === "" || password === " ") {
-      setErrors((prevsValue) => [...prevsValue, "Enter your password"]);
-    } else if (password) {
-      setErrors([]);
-    }
-    if (email && password) {
-      try {
-        setErrors([]);
-        setLoading(true);
-        await signin(email, password);
-        history.push("/");
-        setLoading(false);
-      } catch (err) {
-        if (err) {
-          setErrors((prevsValue) => [...prevsValue, err.message]);
-        } else {
-          setErrors([]);
-        }
-        setLoading(false);
+  // submit email and password
+  const onSubmit = async ({ email, password }) => {
+    try {
+      setError("");
+      setLoading(true);
+      await signin(email, password);
+      history.push("/");
+      setLoading(false);
+    } catch (err) {
+      if (err) {
+        setError(err.message);
+      } else {
+        setError("");
       }
+      setLoading(false);
     }
   };
   return (
@@ -55,35 +48,41 @@ const SignIn = ({ history }) => {
               <img src={darkLogo} alt="Dark Logo" />
             </Link>
           </div>
-          {errors.length > 0 && (
+          {error && (
             <div className="ss__error">
               <WarningIcon className="ss__error--icon" />
-              <ul>
-                {errors?.map((err, index) => (
-                  <li className="ss__error--text" key={index}>
-                    {err}
-                  </li>
-                ))}
-              </ul>
+              <span className="ss__error--text">{error}</span>
             </div>
           )}
-          <form className="form__container" onSubmit={handleSignIn}>
+          <form className="form__container" onSubmit={handleSubmit(onSubmit)}>
             <h1 className="form__header--text">Sign In</h1>
             <span className="form__group">
               <label className="form__label">Email</label>
               <input
                 type="email"
                 className="form__control"
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email", { required: true })}
               />
+              {errors.email && (
+                <span className="form__error">
+                  <ErrorOutlineIcon className="form__error--icon" />
+                  Enter your email
+                </span>
+              )}
             </span>
             <span className="form__group">
               <label className="form__label">Password</label>
               <input
                 type="password"
                 className="form__control"
-                onChange={(e) => setPassword(e.target.value)}
+                {...register("password", { required: true })}
               />
+              {errors.password && (
+                <span className="form__error">
+                  <ErrorOutlineIcon className="form__error--icon" />
+                  Enter your password
+                </span>
+              )}
             </span>
             <div className="form__button">
               <Button type="submit" variant="contained" disabled={loading}>

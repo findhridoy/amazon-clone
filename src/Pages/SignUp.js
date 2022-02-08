@@ -3,62 +3,43 @@ import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import WarningIcon from "@material-ui/icons/Warning";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context/GlobalContext";
 import darkLogo from "../Images/dark-logo.png";
 
 const SignUp = ({ history }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState();
-  const [errors, setErrors] = useState([]);
+  const [confirmPassError, setConfirmPassError] = useState(false);
+  const [error, setError] = useState("");
 
   //   use context
   const { signup } = useGlobalContext();
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+  // react hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    //   basic validation
-    if (name === "" || name === " ") {
-      setErrors((prevsValue) => [...prevsValue, "Enter your name"]);
-    } else if (name) {
-      setErrors([]);
-    }
-    if (email === "" || email === " ") {
-      setErrors((prevsValue) => [...prevsValue, "Enter your email"]);
-    } else if (email) {
-      setErrors([]);
-    }
-    if (password === "" || password === " ") {
-      setErrors((prevsValue) => [...prevsValue, "Enter your password"]);
-    } else if (password) {
-      setErrors([]);
-    }
-    if (password && (confirmPassword === "" || confirmPassword === " ")) {
-      setErrors((prevsValue) => [...prevsValue, "Re-enter your password"]);
-    } else if (confirmPassword) {
-      setErrors([]);
-    }
-    if (password && confirmPassword && password !== confirmPassword) {
-      setErrors((prevsValue) => [...prevsValue, "Password don't match."]);
-    } else if (password && password === confirmPassword) {
-      setErrors([]);
-    }
-    if (name && email && password && password === confirmPassword) {
+  // submit name, email and password
+  const onSubmit = async ({ name, email, password, confirmPassword }) => {
+    if (password !== confirmPassword) {
+      setConfirmPassError(true);
+    } else {
       try {
-        setErrors([]);
+        setConfirmPassError(false);
+        setError("");
         setLoading(true);
         await signup(email, password, name);
         history.push("/");
         setLoading(false);
       } catch (err) {
         if (err) {
-          setErrors((prevsValue) => [...prevsValue, err.message]);
+          setError(err.message);
         } else {
-          setErrors([]);
+          setError("");
         }
         setLoading(false);
       }
@@ -74,27 +55,27 @@ const SignUp = ({ history }) => {
             <img src={darkLogo} alt="Dark Logo" />
           </Link>
         </div>
-        {errors.length > 0 && (
+        {error && (
           <div className="ss__error">
             <WarningIcon className="ss__error--icon" />
-            <ul>
-              {errors?.map((err, index) => (
-                <li className="ss__error--text" key={index}>
-                  {err}
-                </li>
-              ))}
-            </ul>
+            <span className="ss__error--text">{error}</span>
           </div>
         )}
-        <form className="form__container" onSubmit={handleSignUp}>
+        <form className="form__container" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="form__header--text">Create account</h1>
           <span className="form__group">
             <label className="form__label">Your name</label>
             <input
-              type="text"
+              type="name"
               className="form__control"
-              onChange={(e) => setName(e.target.value)}
+              {...register("name", { required: true })}
             />
+            {errors.name && (
+              <span className="form__error">
+                <ErrorOutlineIcon className="form__error--icon" />
+                Enter your name
+              </span>
+            )}
           </span>
 
           <span className="form__group">
@@ -102,8 +83,14 @@ const SignUp = ({ history }) => {
             <input
               type="email"
               className="form__control"
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email", { required: true })}
             />
+            {errors.email && (
+              <span className="form__error">
+                <ErrorOutlineIcon className="form__error--icon" />
+                Enter your email
+              </span>
+            )}
           </span>
 
           <span className="form__group">
@@ -112,12 +99,20 @@ const SignUp = ({ history }) => {
               type="password"
               className="form__control"
               placeholder="At least 6 characters."
-              onChange={(e) => setPassword(e.target.value)}
+              {...register("password", { required: true })}
             />
-            <span className="form__help--text">
-              <ErrorOutlineIcon />
-              Password must be at least 6 characters.
-            </span>
+
+            {errors.password ? (
+              <span className="form__error">
+                <ErrorOutlineIcon className="form__error--icon" />
+                Enter your password
+              </span>
+            ) : (
+              <span className="form__help--text">
+                <ErrorOutlineIcon />
+                Password must be at least 6 characters.
+              </span>
+            )}
           </span>
 
           <span className="form__group">
@@ -125,8 +120,20 @@ const SignUp = ({ history }) => {
             <input
               type="password"
               className="form__control"
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              {...register("confirmPassword", { required: true })}
             />
+            {errors.confirmPassword && (
+              <span className="form__error">
+                <ErrorOutlineIcon className="form__error--icon" />
+                Re-enter your password
+              </span>
+            )}
+            {confirmPassError && (
+              <span className="form__error">
+                <ErrorOutlineIcon className="form__error--icon" />
+                Password don't match
+              </span>
+            )}
           </span>
 
           <div className="form__button">
