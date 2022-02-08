@@ -1,4 +1,5 @@
 import { Button } from "@material-ui/core";
+import WarningIcon from "@material-ui/icons/Warning";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context/GlobalContext";
@@ -8,7 +9,7 @@ const SignIn = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState();
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState([]);
 
   //   use context
   const { signin } = useGlobalContext();
@@ -18,18 +19,28 @@ const SignIn = ({ history }) => {
 
     //   basic validation
     if (email === "" || email === " ") {
-      setError("Enter your email");
-    } else if (password === "" || password === " ") {
-      setError("Enter your password");
-    } else {
+      setErrors((prevsValue) => [...prevsValue, "Enter your email"]);
+    } else if (email) {
+      setErrors([]);
+    }
+    if (password === "" || password === " ") {
+      setErrors((prevsValue) => [...prevsValue, "Enter your password"]);
+    } else if (password) {
+      setErrors([]);
+    }
+    if (email && password) {
       try {
-        setError("");
+        setErrors([]);
         setLoading(true);
         await signin(email, password);
         history.push("/");
         setLoading(false);
-      } catch (error) {
-        setError(error.message);
+      } catch (err) {
+        if (err) {
+          setErrors((prevsValue) => [...prevsValue, err.message]);
+        } else {
+          setErrors([]);
+        }
         setLoading(false);
       }
     }
@@ -44,7 +55,18 @@ const SignIn = ({ history }) => {
               <img src={darkLogo} alt="Dark Logo" />
             </Link>
           </div>
-          <div className="ss__error">{error && <span>{error}</span>}</div>
+          {errors.length > 0 && (
+            <div className="ss__error">
+              <WarningIcon className="ss__error--icon" />
+              <ul>
+                {errors?.map((err, index) => (
+                  <li className="ss__error--text" key={index}>
+                    {err}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <form className="form__container" onSubmit={handleSignIn}>
             <h1 className="form__header--text">Sign In</h1>
             <span className="form__group">

@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import WarningIcon from "@material-ui/icons/Warning";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context/GlobalContext";
@@ -12,7 +13,7 @@ const SignUp = ({ history }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState();
-  let error = [];
+  const [errors, setErrors] = useState([]);
 
   //   use context
   const { signup } = useGlobalContext();
@@ -22,28 +23,43 @@ const SignUp = ({ history }) => {
 
     //   basic validation
     if (name === "" || name === " ") {
-      error.push("Enter your name");
+      setErrors((prevsValue) => [...prevsValue, "Enter your name"]);
+    } else if (name) {
+      setErrors([]);
     }
     if (email === "" || email === " ") {
-      error.push("Enter your email");
+      setErrors((prevsValue) => [...prevsValue, "Enter your email"]);
+    } else if (email) {
+      setErrors([]);
     }
     if (password === "" || password === " ") {
-      error.push("Enter your password");
+      setErrors((prevsValue) => [...prevsValue, "Enter your password"]);
+    } else if (password) {
+      setErrors([]);
     }
-    if (confirmPassword === "" || confirmPassword === " ") {
-      error.push("Re-enter password");
+    if (password && (confirmPassword === "" || confirmPassword === " ")) {
+      setErrors((prevsValue) => [...prevsValue, "Re-enter your password"]);
+    } else if (confirmPassword) {
+      setErrors([]);
     }
-    if (password && password !== confirmPassword) {
-      error.push("Password don't match.");
-    } else {
+    if (password && confirmPassword && password !== confirmPassword) {
+      setErrors((prevsValue) => [...prevsValue, "Password don't match."]);
+    } else if (password && password === confirmPassword) {
+      setErrors([]);
+    }
+    if (name && email && password && password === confirmPassword) {
       try {
-        error = [];
+        setErrors([]);
         setLoading(true);
         await signup(email, password, name);
         history.push("/");
         setLoading(false);
       } catch (err) {
-        error.push(err.message);
+        if (err) {
+          setErrors((prevsValue) => [...prevsValue, err.message]);
+        } else {
+          setErrors([]);
+        }
         setLoading(false);
       }
     }
@@ -58,11 +74,18 @@ const SignUp = ({ history }) => {
             <img src={darkLogo} alt="Dark Logo" />
           </Link>
         </div>
-        <div className="ss__error">
-          {/* {error?.map((err) => (
-            <span>{err}</span>
-          ))} */}
-        </div>
+        {errors.length > 0 && (
+          <div className="ss__error">
+            <WarningIcon className="ss__error--icon" />
+            <ul>
+              {errors?.map((err, index) => (
+                <li className="ss__error--text" key={index}>
+                  {err}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <form className="form__container" onSubmit={handleSignUp}>
           <h1 className="form__header--text">Create account</h1>
           <span className="form__group">

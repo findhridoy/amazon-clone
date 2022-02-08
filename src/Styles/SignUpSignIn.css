@@ -1,132 +1,150 @@
-.ss__section{
-    margin-top: -3rem;
+.ss__section {
+  margin-top: -3rem;
 }
-.ss__container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 1rem;
+.ss__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
 }
-.ss__logo img{
-    width: 100px;
+.ss__logo img {
+  width: 100px;
 }
-.form__container{
-    border: var(--border);
-    border-color: var(--gray-alt-color);
-    border-radius: var(--radius);
-    padding: var(--x-1-25);
-    max-width: 380px;
+.ss__error {
+  border: var(--border);
+  border-color: var(--red-color);
+  border-radius: var(--radius);
+  padding: var(--x-1);
+  width: 380px;
+  display: flex;
+  column-gap: 1rem;
 }
-.form__header--text{
-    font-weight: var(--semi-bold);
-    font-size: var(--h1-font);
+.ss__error--icon {
+  color: var(--red-color);
+  font-size: var(--big-font) !important;
 }
-.form__group{
-    display: flex;
-    flex-direction: column;
-   margin-top: var(--x-1);
+.ss__error--text {
+  font-size: var(--small-font);
+  font-weight: var(--medium);
+  color: var(--red-color);
 }
-.form__label{
-    font-weight: var(--semi-bold);
-    font-size: var(--small-font);
-    color: var(--dark-color);
+.form__container {
+  border: var(--border);
+  border-color: var(--gray-alt-color);
+  border-radius: var(--radius);
+  padding: var(--x-1-25);
+  max-width: 380px;
 }
-.form__control{
-    border: var(--border);
-    border-color: var(--gray-alt-color);
-    border-radius: var(--radius);
-    height: 2.5rem;
-    padding: 0 var(--x-0-5);
-    font-size: var(--small-font);
-    font-weight: var(--medium);
+.form__header--text {
+  font-weight: var(--semi-bold);
+  font-size: var(--h1-font);
 }
-.form__help--text{
-    font-size: var(--smaller-font);
-    display: flex;
-    align-items: center;
-    column-gap: 0.2rem;
-    margin-top: var(--x-0-25);
+.form__group {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--x-1);
 }
-.form__help--text .MuiSvgIcon-root{
-    color: var(--gray-color);
-    font-size: var(--h3-font);
-  }
-.form__button button{
-    background-image: var( --gradient-color) !important;
-    border: var(--border);
-    margin-top: var(--x-1);
-    border-color: #a88734 #9c7e31 #846a29;
-    color: var(--dark-color);
-    padding: var(--x-0-5) var(--x-0-75);
-    font-size: var(--small-font);
-    text-transform: capitalize;
-    width: 100%;
+.form__label {
+  font-weight: var(--semi-bold);
+  font-size: var(--small-font);
+  color: var(--dark-color);
 }
-.form__condition{
-    font-size: var(--smaller-font);
-    display: block;
-    margin-top: var(--x-1-75);
+.form__control {
+  border: var(--border);
+  border-color: var(--gray-alt-color);
+  border-radius: var(--radius);
+  height: 2.5rem;
+  padding: 0 var(--x-0-5);
+  font-size: var(--small-font);
+  font-weight: var(--medium);
 }
-.from__bottom--text{
-    font-size: var(--small-font);
-    display: flex;
-    margin-top: var(--x-1);
-    align-items: center;
-    column-gap: 0.3rem;
+.form__help--text {
+  font-size: var(--smaller-font);
+  display: flex;
+  align-items: center;
+  column-gap: 0.2rem;
+  margin-top: var(--x-0-25);
 }
-.form__link{
-    color: blue;
+.form__help--text .MuiSvgIcon-root {
+  color: var(--gray-color);
+  font-size: var(--h3-font);
 }
-.form__link:hover{
-    text-decoration: underline;
-    color: var(--red-color);
+.form__button button {
+  background-image: var(--gradient-color) !important;
+  border: var(--border);
+  margin-top: var(--x-1);
+  border-color: #a88734 #9c7e31 #846a29;
+  color: var(--dark-color);
+  padding: var(--x-0-5) var(--x-0-75);
+  font-size: var(--small-font);
+  text-transform: capitalize;
+  width: 100%;
 }
-.form__link--icon{
-    display: flex;
-    align-items: center;
+.form__condition {
+  font-size: var(--smaller-font);
+  display: block;
+  margin-top: var(--x-1-75);
 }
-.form__link--icon .MuiSvgIcon-root{
-    font-size: var(--h3-font);
+.from__bottom--text {
+  font-size: var(--small-font);
+  display: flex;
+  margin-top: var(--x-1);
+  align-items: center;
+  column-gap: 0.3rem;
 }
-  .ss__bottom--section{
-    width: 100%;
-    max-width: 380px;
-  }
-  .ss__bottom--text{
-      font-size: var(--small-font);
-      font-weight: var(--medium);
-      color: var(--gray-color);
-      position: relative;
-      width: 100%;
-      display: block;
-      text-align: center;
-  }
-  .ss__bottom--text::after,
-  .ss__bottom--text::before{
-      content: '';
-      position: absolute;
-      width: 8rem;
-      height: 0.02rem;
-     background-color: var(--gray-alt-color);
-     top: 50%;
-  }
-  .ss__bottom--text::before{
-      left: 0;
-  }
-  .ss__bottom--text::after{
-    right: 0;
+.form__link {
+  color: blue;
 }
-.ss__bottom--button button{
-    background-image: var( --gradient-alt-color) !important;
-    border: var(--border);
-    border-color: var(--gray-alt-color);
-    margin-top: var(--x-0-75);
-    color: var(--dark-color);
-    padding: var(--x-0-5) var(--x-0-75);
-    font-size: var(--small-font);
-    text-transform: capitalize;
-    width: 100%;
+.form__link:hover {
+  text-decoration: underline;
+  color: var(--red-color);
 }
-.ss__bottom--button .button__text{
-    color: var(--dark-color);
+.form__link--icon {
+  display: flex;
+  align-items: center;
+}
+.form__link--icon .MuiSvgIcon-root {
+  font-size: var(--h3-font);
+}
+.ss__bottom--section {
+  width: 100%;
+  max-width: 380px;
+}
+.ss__bottom--text {
+  font-size: var(--small-font);
+  font-weight: var(--medium);
+  color: var(--gray-color);
+  position: relative;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+.ss__bottom--text::after,
+.ss__bottom--text::before {
+  content: "";
+  position: absolute;
+  width: 8rem;
+  height: 0.02rem;
+  background-color: var(--gray-alt-color);
+  top: 50%;
+}
+.ss__bottom--text::before {
+  left: 0;
+}
+.ss__bottom--text::after {
+  right: 0;
+}
+.ss__bottom--button button {
+  background-image: var(--gradient-alt-color) !important;
+  border: var(--border);
+  border-color: var(--gray-alt-color);
+  margin-top: var(--x-0-75);
+  color: var(--dark-color);
+  padding: var(--x-0-5) var(--x-0-75);
+  font-size: var(--small-font);
+  text-transform: capitalize;
+  width: 100%;
+}
+.ss__bottom--button .button__text {
+  color: var(--dark-color);
 }
