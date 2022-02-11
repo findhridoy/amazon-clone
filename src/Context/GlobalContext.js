@@ -27,6 +27,9 @@ const initialState = {
   shippingAddress: localStorage.getItem("shippingAddress")
     ? JSON.parse(localStorage.getItem("shippingAddress"))
     : null,
+  paymentMethod: localStorage.getItem("paymentMethod")
+    ? JSON.parse(localStorage.getItem("paymentMethod"))
+    : null,
 };
 
 // create the context

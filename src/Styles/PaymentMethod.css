@@ -1,0 +1,61 @@
+.paymentMethod__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.paymentMethod__radio--form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.paymentMethod__title {
+  font-size: var(--h2-font);
+  font-weight: var(--semi-bold);
+  color: var(--dark-color);
+}
+.radio__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* border: var(--border); */
+  border-radius: var(--radius);
+  padding: var(--x-1);
+  background-color: var(--white-color);
+}
+.radio__text {
+  font-weight: var(--semi-bold);
+  font-size: var(--normal-font);
+}
+
+.paymentMethod__btn button {
+  height: 2.5rem;
+  padding: 0 var(--x-0-5);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  color: var(--white-color);
+  border-radius: 4px;
+  font-size: var(--small-font);
+  font-weight: var(--semi-bold);
+  letter-spacing: 0.025em;
+  background-color: #6772e5 !important;
+  margin-top: var(--x-0-5);
+  width: 100%;
+}
+
+/*====================== MEDIA QUERIES =====================*/
+/* ------------- For Medium Device ------------- */
+@media screen and (min-width: 576px) {
+}
+
+/* ------------- For Tablet, Laptop ------------- */
+@media screen and (min-width: 768px) {
+}
+
+/* ------------- For Large Device ------------- */
+@media screen and (min-width: 1024px) {
+}
+/* ------------- For Extra Large Device ------------- */
+@media screen and (min-width: 1200px) {
+}

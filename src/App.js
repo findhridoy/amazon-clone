@@ -2,7 +2,9 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import GlobalProvider from "./Context/GlobalContext";
 import Basket from "./Pages/Basket";
+import ConfirmOrder from "./Pages/ConfirmOrder";
 import Home from "./Pages/Home";
+import PaymentMethod from "./Pages/PaymentMethod";
 import ProductByCategory from "./Pages/ProductByCategory";
 import ProductDetails from "./Pages/ProductDetails";
 import ShippingForm from "./Pages/ShippingForm";
@@ -18,6 +20,8 @@ function App() {
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/basket" component={Basket} />
         <Route exact path="/shippingAddress" component={ShippingForm} />
+        <Route exact path="/paymentMethod" component={PaymentMethod} />
+        <Route exact path="/confirmOrder" component={ConfirmOrder} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
       </Switch>

@@ -228,6 +228,9 @@ section {
 @import "./Styles/Basket.css";
 @import "./Styles/BasketCard.css";
 @import "./Styles/ShippingForm.css";
+@import "./Styles/PaymentMethod.css";
+@import "./Styles/CheckoutForm.css";
+@import "./Styles/ConfirmOrder.css";
 
 ::-webkit-scrollbar {
   width: 0.6rem;

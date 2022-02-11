@@ -1,0 +1,49 @@
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.checkoutForm__form {
+  border: var(--border);
+  border-color: var(--gray-alt-color);
+  border-radius: var(--radius);
+  padding: var(--x-1-25);
+  padding-top: 0;
+  max-width: 380px;
+  background-color: var(--white-color);
+  /* margin-top: var(--x-1); */
+}
+.form__btn button {
+  height: 2.5rem;
+  padding: 0 var(--x-0-5);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  color: var(--white-color);
+  border-radius: 4px;
+  font-size: var(--small-font);
+  font-weight: var(--semi-bold);
+  letter-spacing: 0.025em;
+  background-color: #6772e5 !important;
+  margin-top: var(--x-1-5);
+  width: 100%;
+}
+
+.StripeElement {
+  border: var(--border);
+  border-color: var(--gray-alt-color);
+  border-radius: var(--radius);
+  height: 2.5rem;
+  padding: 10px var(--x-0-5);
+  font-size: var(--small-font);
+  font-weight: var(--medium);
+  font-family: var(--Poppins-font) !important;
+}
+
+.StripeElement.IdealBankElement,
+.StripeElement.FpxBankElement,
+.StripeElement.PaymentRequestButton {
+  padding: 0;
+}
+
+.StripeElement.PaymentRequestButton {
+  height: 40px;
+}

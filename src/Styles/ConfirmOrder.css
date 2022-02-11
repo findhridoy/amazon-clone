@@ -1,0 +1,137 @@
+.confirmOrder__title {
+  font-weight: var(--semi-bold);
+  font-size: var(--h2-font);
+  color: var(--dark-color);
+  margin-bottom: var(--x-0-75);
+}
+.confirmOrder__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.confrimOrder__data {
+  background-color: var(--white-color);
+  padding: var(--x-1);
+  border-radius: var(--radius);
+  height: max-content;
+}
+.confirmOrder__subtitle,
+.orderSummery__title {
+  font-weight: var(--semi-bold);
+  font-size: var(--h3-font);
+  color: var(--dark-color);
+  margin-bottom: var(--x-0-5);
+  text-transform: uppercase;
+  letter-spacing: 0.02rem;
+}
+
+/* Shipping Data */
+.shippingData {
+  display: flex;
+  flex-direction: column;
+}
+.shippingData span {
+  font-size: var(--small-font);
+  font-weight: var(--medium);
+  color: var(--dark-color);
+}
+
+/* Order Items */
+.orderItems {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 40px auto 70px 50px;
+  align-items: center;
+  padding: var(--x-0-5) 0;
+}
+.orderItems:not(:nth-child(2)) {
+  border-top: var(--border);
+  border-color: var(--gray-alt-color);
+}
+.orderItems img {
+  width: 40px;
+  object-fit: cover;
+}
+.orderItems span {
+  font-size: var(--small-font);
+  font-weight: var(--medium);
+  color: var(--dark-color);
+}
+/* Payment Method */
+.confirmOrder__notPayment {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--red-color);
+  font-weight: var(--medium);
+}
+
+/* Order Summery */
+.orderSummery {
+  border: var(--border);
+  border-color: var(--gray-alt-color);
+}
+.orderSummery__title {
+  border-bottom: var(--border);
+  border-color: var(--gray-alt-color);
+  text-align: center;
+  padding: var(--x-0-75) 0;
+}
+.orderSummery__data {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--x-0-5) var(--x-1);
+  border-bottom: var(--border);
+  border-color: var(--gray-alt-color);
+}
+.orderSummery__data:last-child {
+  border: none;
+}
+.orderSummery__data span {
+  font-size: var(--small-font);
+  font-weight: var(--medium);
+  color: var(--dark-color);
+}
+
+.orderSummery__total span {
+  font-weight: var(--semi-bold);
+}
+
+.orderSummery__btn {
+  padding: var(--x-1);
+}
+.orderSummery__btn button {
+  background-image: var(--gradient-color) !important;
+  border: var(--border);
+  border-color: #a88734 #9c7e31 #846a29;
+  color: var(--dark-color);
+  padding: var(--x-0-5) var(--x-0-75);
+  font-size: var(--small-font);
+  font-weight: var(--semi-bold);
+  width: 100%;
+}
+
+/*====================== MEDIA QUERIES =====================*/
+/* ------------- For Medium Device ------------- */
+@media screen and (min-width: 576px) {
+}
+
+/* ------------- For Tablet, Laptop ------------- */
+@media screen and (min-width: 768px) {
+  .confirmOrder__container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: auto 300px;
+  }
+}
+
+/* ------------- For Large Device ------------- */
+@media screen and (min-width: 1024px) {
+  .confirmOrder__container {
+    grid-template-columns: auto 380px;
+  }
+}
+/* ------------- For Extra Large Device ------------- */
+@media screen and (min-width: 1200px) {
+}

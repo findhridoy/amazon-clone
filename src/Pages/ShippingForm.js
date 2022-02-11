@@ -13,7 +13,12 @@ const ShippingForm = () => {
   const [error, setError] = useState(false);
 
   // use context
-  const { getShippingAddress } = useGlobalContext();
+  const {
+    getShippingAddress,
+    state: {
+      userInfo: { email },
+    },
+  } = useGlobalContext();
 
   // react hook form
   const {
@@ -33,7 +38,7 @@ const ShippingForm = () => {
 
   // submit data
   const onSubmit = (data) => {
-    const allData = { ...data, country };
+    const allData = { ...data, country, email };
     setLoading(true);
     getShippingAddress(allData);
     setLoading(false);
