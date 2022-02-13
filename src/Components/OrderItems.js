@@ -2,17 +2,22 @@ import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import React from "react";
 
-const OrderItems = ({ product, removeFromBasket }) => {
+const OrderItems = ({ product, removeFromBasket, condition }) => {
   return (
-    <div className="orderItems">
+    <div className={!condition ? "orderItems" : "orderItems__condition"}>
       <img src={product?.image} alt="" />
       <span>{product?.title}</span>
       <span>$ {product?.price}</span>
-      <span>
-        <IconButton size="small" onClick={() => removeFromBasket(product?.id)}>
-          <CloseIcon />
-        </IconButton>
-      </span>
+      {!condition && (
+        <span>
+          <IconButton
+            size="small"
+            onClick={() => removeFromBasket(product?.id)}
+          >
+            <CloseIcon />
+          </IconButton>
+        </span>
+      )}
     </div>
   );
 };

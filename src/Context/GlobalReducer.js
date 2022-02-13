@@ -1,9 +1,13 @@
 import {
+  ADD_ORDERS,
+  ADD_PAYMENT_METHOD,
   ADD_SHIPPING_ADDRESS,
   ADD_TO_BASKET,
   REMOVE_FROM_BASKET,
+  RESET_STORAGE,
   RESET_USER,
   SIGN_UP_USER,
+  UPDATE_PAYMENT,
 } from "./Types";
 
 export const globalReducers = (state, action) => {
@@ -38,6 +42,38 @@ export const globalReducers = (state, action) => {
         ...state,
         shippingAddress: action.payload,
       };
+
+    case ADD_PAYMENT_METHOD:
+      return {
+        ...state,
+        paymentMethod: action.payload,
+      };
+
+    case ADD_ORDERS:
+      return {
+        ...state,
+        orders: [...state.orders, action.payload],
+      };
+
+    case RESET_STORAGE:
+      return {
+        ...state,
+        basketItems: [],
+        shippingAddress: null,
+      };
+
+    case UPDATE_PAYMENT:
+      let matchId = state.orders.filter((x) => x.id === action.payload.orderId);
+
+      return {
+        ...state,
+        orders: {
+          ...matchId.map(
+            ((product) => product.paymentMethod: action.payload.paymentId)
+          ),
+        },
+      };
+
     default:
       return state;
   }

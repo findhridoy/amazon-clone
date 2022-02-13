@@ -7,16 +7,16 @@ import { useGlobalContext } from "../Context/GlobalContext";
 import ads1 from "../Images/ads/blog-ads.png";
 import Layout from "../Layout/Layout";
 
-const ShippingForm = () => {
+const ShippingForm = ({ history }) => {
   const [country, setCountry] = useState("");
   const [loading, setLoading] = useState();
   const [error, setError] = useState(false);
 
   // use context
   const {
-    getShippingAddress,
+    addShippingAddress,
     state: {
-      userInfo: { email },
+      userInfo: { email, displayName },
     },
   } = useGlobalContext();
 
@@ -40,8 +40,9 @@ const ShippingForm = () => {
   const onSubmit = (data) => {
     const allData = { ...data, country, email };
     setLoading(true);
-    getShippingAddress(allData);
+    addShippingAddress(allData);
     setLoading(false);
+    history.push("/paymentMethod");
   };
 
   return (
@@ -75,6 +76,7 @@ const ShippingForm = () => {
                 <input
                   className="form__control"
                   type="text"
+                  defaultValue={displayName && displayName}
                   {...register("name", { required: true })}
                 />
                 {errors.name && (

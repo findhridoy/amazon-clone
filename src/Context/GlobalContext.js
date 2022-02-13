@@ -10,11 +10,15 @@ import { auth } from "../firebase";
 import Loader from "../Layout/Loader";
 import { globalReducers } from "./GlobalReducer";
 import {
+  ADD_ORDERS,
+  ADD_PAYMENT_METHOD,
   ADD_SHIPPING_ADDRESS,
   ADD_TO_BASKET,
   REMOVE_FROM_BASKET,
+  RESET_STORAGE,
   RESET_USER,
   SIGN_UP_USER,
+  UPDATE_PAYMENT,
 } from "./Types";
 
 // Initial State
@@ -30,6 +34,9 @@ const initialState = {
   paymentMethod: localStorage.getItem("paymentMethod")
     ? JSON.parse(localStorage.getItem("paymentMethod"))
     : null,
+  orders: localStorage.getItem("orders")
+    ? JSON.parse(localStorage.getItem("orders"))
+    : [],
 };
 
 // create the context
@@ -102,11 +109,41 @@ const GlobalProvider = ({ children }) => {
     return basketItems?.reduce((ammount, item) => item.price + ammount, 0);
   };
 
-  // acitons: shipping address
-  const getShippingAddress = (address) => {
+  // acitons: add shipping address
+  const addShippingAddress = (address) => {
     dispatch({
       type: ADD_SHIPPING_ADDRESS,
       payload: address,
+    });
+  };
+  // acitons: add payment
+  const addPaymentMethod = (id) => {
+    dispatch({
+      type: ADD_PAYMENT_METHOD,
+      payload: id,
+    });
+  };
+
+  // acitons: add place order
+  const addPlaceOrder = (userOrders) => {
+    dispatch({
+      type: ADD_ORDERS,
+      payload: userOrders,
+    });
+  };
+
+  // acitons: reset stroage
+  const resetStorage = () => {
+    dispatch({
+      type: RESET_STORAGE,
+    });
+  };
+
+  // acitons: reset stroage
+  const updatePayment = (orderId, paymentId) => {
+    dispatch({
+      type: UPDATE_PAYMENT,
+      payload: { orderId, paymentId },
     });
   };
 
@@ -116,7 +153,10 @@ const GlobalProvider = ({ children }) => {
       "shippingAddress",
       JSON.stringify(state.shippingAddress)
     );
+    localStorage.setItem("paymentMethod", JSON.stringify(state.paymentMethod));
+    localStorage.setItem("orders", JSON.stringify(state.orders));
   }, [state]);
+
   // values
   const value = {
     ...state,
@@ -127,7 +167,11 @@ const GlobalProvider = ({ children }) => {
     addToBasket,
     removeFromBasket,
     getSubTotal,
-    getShippingAddress,
+    addShippingAddress,
+    addPaymentMethod,
+    addPlaceOrder,
+    resetStorage,
+    updatePayment,
   };
   return (
     <GlobalContext.Provider value={value}>

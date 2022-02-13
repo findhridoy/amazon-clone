@@ -60,7 +60,7 @@ const Header = () => {
                 )}
               </li>
               <li className="nav__item">
-                <NavLink className="nav__link" exact to="/">
+                <NavLink className="nav__link" exact to="/order">
                   <span className="nav__lineOne">Returns</span>
                   <span className="nav__lineTwo">& Orders</span>
                 </NavLink>

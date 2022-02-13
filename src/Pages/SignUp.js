@@ -8,13 +8,16 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context/GlobalContext";
 import darkLogo from "../Images/dark-logo.png";
 
-const SignUp = ({ history }) => {
+const SignUp = ({ history, location, replace }) => {
   const [loading, setLoading] = useState();
   const [confirmPassError, setConfirmPassError] = useState(false);
   const [error, setError] = useState("");
 
   //   use context
   const { signup } = useGlobalContext();
+
+  // Redirect
+  let { from } = location.state || { from: { pathname: "/" } };
 
   // react hook form
   const {
@@ -33,7 +36,7 @@ const SignUp = ({ history }) => {
         setError("");
         setLoading(true);
         await signup(email, password, name);
-        history.push("/");
+        history.replace(from);
         setLoading(false);
       } catch (err) {
         if (err) {

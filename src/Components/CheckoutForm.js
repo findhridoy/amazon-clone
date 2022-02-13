@@ -9,14 +9,18 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { useGlobalContext } from "../Context/GlobalContext";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ condition, orderId }) => {
   const [cardName, setCardName] = useState("");
   const [errors, setErrors] = useState();
   const [loading, setLoading] = useState();
 
   const stripe = useStripe();
   const elements = useElements();
+
+  // use context
+  const { addPaymentMethod, updatePayment } = useGlobalContext();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,10 +46,16 @@ const CheckoutForm = () => {
     if (cardName && error) {
       setErrors(error);
     }
-    if (paymentMethod) {
+    if (paymentMethod && !condition) {
       setErrors();
+      addPaymentMethod(paymentMethod.id);
     }
+    if (condition && paymentMethod) {
+      updatePayment(orderId, paymentMethod.id);
+    }
+    // event?.reset();
   };
+
   return (
     <div className="checkoutForm">
       {errors && (

@@ -1,9 +1,12 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import GlobalProvider from "./Context/GlobalContext";
+import PrivateRoute from "./Layout/PrivateRoute";
+import PublicRoute from "./Layout/PublicRoute";
 import Basket from "./Pages/Basket";
 import ConfirmOrder from "./Pages/ConfirmOrder";
 import Home from "./Pages/Home";
+import Order from "./Pages/Order";
 import PaymentMethod from "./Pages/PaymentMethod";
 import ProductByCategory from "./Pages/ProductByCategory";
 import ProductDetails from "./Pages/ProductDetails";
@@ -19,11 +22,12 @@ function App() {
         <Route exact path="/category/:title" component={ProductByCategory} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/basket" component={Basket} />
-        <Route exact path="/shippingAddress" component={ShippingForm} />
-        <Route exact path="/paymentMethod" component={PaymentMethod} />
-        <Route exact path="/confirmOrder" component={ConfirmOrder} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signup" component={SignUp} />
+        <PrivateRoute exact path="/shippingAddress" component={ShippingForm} />
+        <PrivateRoute exact path="/paymentMethod" component={PaymentMethod} />
+        <PrivateRoute exact path="/confirmOrder" component={ConfirmOrder} />
+        <PrivateRoute exact path="/order" component={Order} />
+        <PublicRoute exact path="/signin" component={SignIn} />
+        <PublicRoute exact path="/signup" component={SignUp} />
       </Switch>
     </GlobalProvider>
   );
