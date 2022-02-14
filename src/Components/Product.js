@@ -15,33 +15,35 @@ const Product = ({ product }) => {
   // find the existing product
   const existingProduct = basketItems?.some((x) => x.id === product.id);
   return (
-    <div className="product__card">
-      <div className="product__card--header">
-        <NavLink
-          to={`/product/${product?.id}`}
-          className="product__card--title"
-          exact
-        >
-          {product?.title}
-        </NavLink>
-        <div className="product__card--price">
-          <span>$</span>
-          <strong>{product?.price}</strong>
+    <>
+      <div className="product__card">
+        <div className="product__card--header">
+          <NavLink
+            to={`/product/${product?.id}`}
+            className="product__card--title"
+            exact
+          >
+            {product?.title}
+          </NavLink>
+          <div className="product__card--price">
+            <span>$</span>
+            <strong>{product?.price}</strong>
+          </div>
+          <Rating rating={product?.rating} />
         </div>
-        <Rating rating={product?.rating} />
+        <div className="product__card--footer">
+          <img src={product?.image} alt="Product Img" />
+          <Button
+            variant="contained"
+            onClick={() => addToBasket(product)}
+            disabled={existingProduct}
+          >
+            <ShoppingCartIcon />
+            Add to Basket
+          </Button>
+        </div>
       </div>
-      <div className="product__card--footer">
-        <img src={product?.image} alt="Product Img" />
-        <Button
-          variant="contained"
-          onClick={() => addToBasket(product)}
-          disabled={existingProduct}
-        >
-          <ShoppingCartIcon />
-          Add to Basket
-        </Button>
-      </div>
-    </div>
+    </>
   );
 };
 

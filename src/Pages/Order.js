@@ -16,64 +16,69 @@ const Order = () => {
   } = useGlobalContext();
 
   useEffect(() => {
-    const matchUser = orders?.filter(
-      (order) => order?.shippingAddress?.email === userInfo?.email
-    );
+    const matchUser = Array.isArray(orders)
+      ? orders.filter(
+          (order) => order?.shippingAddress?.email === userInfo?.email
+        )
+      : [];
+
     setMatchOrder(matchUser);
+    return () => matchUser;
   }, [userInfo, orders]);
 
   return (
     <Layout>
-      {matchOrder?.map((order) => (
-        <section className="confirmOrder__section" key={order?.id}>
-          <div className="container">
-            <h2 className="confirmOrder__title order__title">
-              Order {order?.id}
-            </h2>
+      {matchOrder &&
+        matchOrder?.map((order) => (
+          <section className="confirmOrder__section" key={order?.id}>
+            <div className="container">
+              <h2 className="confirmOrder__title order__title">
+                Order {order?.id}
+              </h2>
 
-            <div className="confirmOrder__container">
-              <div className="confirmOrder__content">
-                <div className="confrimOrder__data">
-                  <h3 className="confirmOrder__subtitle">Shipping Address</h3>
-                  <ShippingData shippingAddress={order?.shippingAddress} />
+              <div className="confirmOrder__container">
+                <div className="confirmOrder__content">
+                  <div className="confrimOrder__data">
+                    <h3 className="confirmOrder__subtitle">Shipping Address</h3>
+                    <ShippingData shippingAddress={order?.shippingAddress} />
+                  </div>
+                  <div className="confrimOrder__data">
+                    <h3 className="confirmOrder__subtitle">Payment Method</h3>
+                    {order?.paymentMethod ? (
+                      <span className="confirmOrder__sucessPayment">
+                        <CheckCircleIcon />
+                        Payment was successfull!
+                      </span>
+                    ) : (
+                      <span className="confirmOrder__notPayment">
+                        <CancelIcon />
+                        Not Paid
+                      </span>
+                    )}
+                  </div>
+                  <div className="confrimOrder__data">
+                    <h3 className="confirmOrder__subtitle">Order items</h3>
+                    {order?.basketItems?.map((product) => (
+                      <OrderItems
+                        product={product}
+                        key={product.id}
+                        condition={true}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="confrimOrder__data">
-                  <h3 className="confirmOrder__subtitle">Payment Method</h3>
-                  {order?.paymentMethod ? (
-                    <span className="confirmOrder__sucessPayment">
-                      <CheckCircleIcon />
-                      Payment was successfull!
-                    </span>
-                  ) : (
-                    <span className="confirmOrder__notPayment">
-                      <CancelIcon />
-                      Not Paid
-                    </span>
-                  )}
+                <div className="confrimOrder__data--orderSummery">
+                  <OrderSummery
+                    basketItems={order?.basketItems}
+                    paymentMethod={order?.paymentMethod}
+                    condition={true}
+                    orderId={order?.id}
+                  />
                 </div>
-                <div className="confrimOrder__data">
-                  <h3 className="confirmOrder__subtitle">Order items</h3>
-                  {order?.basketItems?.map((product) => (
-                    <OrderItems
-                      product={product}
-                      key={product.id}
-                      condition={true}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div className="confrimOrder__data--orderSummery">
-                <OrderSummery
-                  basketItems={order?.basketItems}
-                  paymentMethod={order?.paymentMethod}
-                  condition={true}
-                  orderId={order?.id}
-                />
               </div>
             </div>
-          </div>
-        </section>
-      ))}
+          </section>
+        ))}
       {matchOrder?.length === 0 && <ErrorText text="No order found!" />}
     </Layout>
   );

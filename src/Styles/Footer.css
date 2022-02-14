@@ -1,0 +1,48 @@
+.footer {
+  height: 3rem;
+  background-color: var(--light-blue-color);
+}
+.footer__list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  gap: 1rem;
+}
+.footer__link,
+.footer__item {
+  color: var(--white-color);
+  font-size: var(--smaller-font);
+}
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__item:not(:last-child) {
+  display: none;
+}
+
+/*====================== MEDIA QUERIES =====================*/
+/* ------------- For Medium Device ------------- */
+@media screen and (min-width: 576px) {
+  .footer__item:nth-child(1) {
+    display: block;
+  }
+  .footer__item:nth-child(2) {
+    display: block;
+  }
+}
+
+/* ------------- For Tablet, Laptop ------------- */
+@media screen and (min-width: 768px) {
+  .footer__item:nth-child(3) {
+    display: block;
+  }
+}
+
+/* ------------- For Large Device ------------- */
+@media screen and (min-width: 1024px) {
+}
+/* ------------- For Extra Large Device ------------- */
+@media screen and (min-width: 1200px) {
+}

@@ -4,7 +4,7 @@ import CurrencyFormat from "react-currency-format";
 import BasketCard from "../Components/BasketCard";
 import { useGlobalContext } from "../Context/GlobalContext";
 import ads from "../Images/ads/ads.png";
-import Layout from "../Layout/Layout";
+import LayoutWithoutFooter from "../Layout/LayoutWithoutFooter";
 
 const Basket = ({ history }) => {
   const {
@@ -12,7 +12,7 @@ const Basket = ({ history }) => {
     getSubTotal,
   } = useGlobalContext();
   return (
-    <Layout>
+    <LayoutWithoutFooter>
       <section className="basket__section">
         <div className="container">
           <div className="basket__container">
@@ -90,7 +90,7 @@ const Basket = ({ history }) => {
           </div>
         </div>
       </section>
-    </Layout>
+    </LayoutWithoutFooter>
   );
 };
 

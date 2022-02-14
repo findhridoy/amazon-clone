@@ -6,7 +6,7 @@ import Rating from "../Components/Rating";
 import { useGlobalContext } from "../Context/GlobalContext";
 import { useProductById } from "../Hooks/useProductById";
 import ErrorText from "../Layout/ErrorText";
-import Layout from "../Layout/Layout";
+import LayoutWithoutFooter from "../Layout/LayoutWithoutFooter";
 import Loader from "../Layout/Loader";
 
 const ProductDetails = () => {
@@ -24,7 +24,7 @@ const ProductDetails = () => {
 
   useEffect(() => {}, [id]);
   return (
-    <Layout>
+    <LayoutWithoutFooter>
       {loading ? (
         <Loader />
       ) : (
@@ -62,7 +62,7 @@ const ProductDetails = () => {
         </section>
       )}
       {error && <ErrorText text="Product not found." />}
-    </Layout>
+    </LayoutWithoutFooter>
   );
 };
 

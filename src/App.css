@@ -6,6 +6,7 @@
   /* Colors */
 
   --dark-blue-color: hsl(214, 27%, 10%); /* 214, 27%, 10% */
+  --light-blue-color: hsl(213, 28%, 19%);
   --orange-color: hsl(34, 99%, 70%);
   --orange-alt-color: hsl(34, 88%, 62%);
   --dark-color: hsl(0, 0%, 0%);
@@ -115,7 +116,7 @@ body {
 }
 @media screen and (max-width: 768px) {
   body {
-    margin: var(--header-height) 0;
+    margin: 3.5rem 0;
   }
 }
 ul {
@@ -169,6 +170,11 @@ img {
 }
 .error__text {
   font-size: var(--h4-font);
+  display: flex;
+  flex-direction: column;
+}
+.error__code {
+  font-size: var(--h2-font);
 }
 /*================ REUSEABLE CSS ================*/
 section {
@@ -217,6 +223,7 @@ section {
 
 /*================ CSS ALL FILES ================*/
 @import "./Styles/Header.css";
+@import "./Styles/Footer.css";
 @import "./Styles/Home.css";
 @import "./Styles/BannerSlider.css";
 @import "./Styles/Categories.css";

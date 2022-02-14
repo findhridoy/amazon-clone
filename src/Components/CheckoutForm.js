@@ -51,9 +51,9 @@ const CheckoutForm = ({ condition, orderId }) => {
       addPaymentMethod(paymentMethod.id);
     }
     if (condition && paymentMethod) {
+      setErrors();
       updatePayment(orderId, paymentMethod.id);
     }
-    // event?.reset();
   };
 
   return (

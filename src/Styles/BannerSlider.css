@@ -4,10 +4,35 @@
 }
 .swiper-slide > img {
   object-fit: cover;
+  height: 50vh;
+  width: 100%;
   mask-image: linear-gradient(to bottom, var(--dark-color), var(--transparent));
   -webkit-mask-image: linear-gradient(
     to bottom,
     var(--dark-color),
     var(--transparent)
   );
+}
+
+/*====================== MEDIA QUERIES =====================*/
+/* ------------- For Medium Device ------------- */
+@media screen and (min-width: 576px) {
+}
+
+/* ------------- For Tablet, Laptop ------------- */
+@media screen and (min-width: 768px) {
+  .swiper-slide > img {
+    height: initial;
+    width: 100%;
+  }
+}
+
+/* ------------- For Large Device ------------- */
+@media screen and (min-width: 1024px) {
+  /* .main__products--container {
+    grid-template-columns: repeat(4, 1fr);
+  } */
+}
+/* ------------- For Extra Large Device ------------- */
+@media screen and (min-width: 1200px) {
 }

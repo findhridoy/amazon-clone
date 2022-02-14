@@ -103,6 +103,11 @@
   padding: var(--x-1);
   border-radius: var(--radius);
 }
+.orderSummery__form {
+  width: 100%;
+  max-width: 400px;
+  align-self: center;
+}
 .orderSummery__content {
   border: var(--border);
   border-color: var(--gray-alt-color);

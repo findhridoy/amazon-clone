@@ -1,15 +1,13 @@
 import React from "react";
-import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 
-const Layout = ({ children }) => {
+const LayoutWithoutFooter = ({ children }) => {
   return (
     <>
       <Header />
       {children}
-      <Footer />
     </>
   );
 };
 
-export default Layout;
+export default LayoutWithoutFooter;

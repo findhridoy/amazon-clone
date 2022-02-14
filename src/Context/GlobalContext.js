@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { auth } from "../firebase";
+import { useSearchProduct } from "../Hooks/useSearchProduct";
 import Loader from "../Layout/Loader";
 import { globalReducers } from "./GlobalReducer";
 import {
@@ -50,6 +51,9 @@ export const useGlobalContext = () => {
 // global provider
 const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducers, initialState);
+
+  // use custom hook: search result
+  const { searchResultProducts, searchKey, setSearchKey } = useSearchProduct();
 
   /*============= AUTH ACTIONS =============*/
   // actions: signup user
@@ -172,6 +176,9 @@ const GlobalProvider = ({ children }) => {
     addPlaceOrder,
     resetStorage,
     updatePayment,
+    searchResultProducts,
+    searchKey,
+    setSearchKey,
   };
   return (
     <GlobalContext.Provider value={value}>

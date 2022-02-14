@@ -59,19 +59,17 @@ export const globalReducers = (state, action) => {
       return {
         ...state,
         basketItems: [],
+        paymentMethod: null,
         shippingAddress: null,
       };
 
     case UPDATE_PAYMENT:
       let matchId = state.orders.filter((x) => x.id === action.payload.orderId);
-
+      matchId.map(
+        (product) => (product.paymentMethod = action.payload.paymentId)
+      );
       return {
         ...state,
-        orders: {
-          ...matchId.map(
-            ((product) => product.paymentMethod: action.payload.paymentId)
-          ),
-        },
       };
 
     default:

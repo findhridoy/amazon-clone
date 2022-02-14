@@ -1,12 +1,7 @@
-.home__section {
-  position: relative;
-}
-
 .main__container {
-  position: absolute;
-  top: 65%;
-  width: 100%;
+  position: relative;
   z-index: var(--z-9);
+  margin-top: -100px;
 }
 .main__products--container {
   padding: var(--x-1-75) 0;
@@ -44,6 +39,9 @@
 
 /* ------------- For Tablet, Laptop ------------- */
 @media screen and (min-width: 768px) {
+  .main__container {
+    margin-top: -140px;
+  }
   .main__products:nth-child(3) {
     grid-column: 1 / 5;
   }
@@ -57,10 +55,13 @@
 
 /* ------------- For Large Device ------------- */
 @media screen and (min-width: 1024px) {
-  /* .main__products--container {
-    grid-template-columns: repeat(4, 1fr);
-  } */
+  .main__container {
+    margin-top: -180px;
+  }
 }
 /* ------------- For Extra Large Device ------------- */
 @media screen and (min-width: 1200px) {
+  .main__container {
+    margin-top: -220px;
+  }
 }
