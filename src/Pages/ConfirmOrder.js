@@ -70,12 +70,7 @@ const ConfirmOrder = ({ history }) => {
                 ) : (
                   <span className="confirmOrder__notPayment">
                     <CancelIcon />
-                    Not Paid{" "}
-                    <small>
-                      <strong>
-                        <Link to="/paymentMethod">Paid now</Link>
-                      </strong>
-                    </small>
+                    Not Paid
                   </span>
                 )}
               </div>

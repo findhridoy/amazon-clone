@@ -1,5 +1,6 @@
 import { IconButton } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import HomeIcon from "@material-ui/icons/Home";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PersonIcon from "@material-ui/icons/Person";
@@ -137,15 +138,21 @@ const Header = ({ history }) => {
               </NavLink>
             </li>
             <li className="mobile__nav--item">
-              <NavLink
-                to="/signin"
-                exact
-                activeClassName="mobile__nav--link--active"
-              >
-                <IconButton color="primary">
-                  <PersonIcon className="mobile__nav--icon" />
+              {userInfo ? (
+                <IconButton color="primary" onClick={() => signout()}>
+                  <ExitToAppIcon className="mobile__nav--icon" />
                 </IconButton>
-              </NavLink>
+              ) : (
+                <NavLink
+                  to="/signin"
+                  exact
+                  activeClassName="mobile__nav--link--active"
+                >
+                  <IconButton color="primary">
+                    <PersonIcon className="mobile__nav--icon" />
+                  </IconButton>
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>

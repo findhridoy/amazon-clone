@@ -1,7 +1,7 @@
 .main__container {
   position: relative;
   z-index: var(--z-9);
-  margin-top: -100px;
+  margin-top: -40px;
 }
 .main__products--container {
   padding: var(--x-1-75) 0;
@@ -17,6 +17,9 @@
 /*====================== MEDIA QUERIES =====================*/
 /* ------------- For Medium Device ------------- */
 @media screen and (min-width: 576px) {
+  .main__container {
+    margin-top: -80px;
+  }
   .main__products--container {
     grid-template-columns: repeat(12, 1fr);
   }
@@ -40,7 +43,7 @@
 /* ------------- For Tablet, Laptop ------------- */
 @media screen and (min-width: 768px) {
   .main__container {
-    margin-top: -140px;
+    margin-top: -120px;
   }
   .main__products:nth-child(3) {
     grid-column: 1 / 5;

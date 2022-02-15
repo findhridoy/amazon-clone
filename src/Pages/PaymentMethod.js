@@ -3,7 +3,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import React, { useState } from "react";
 import StripeCheckoutElements from "../Components/StripeCheckoutElements";
 import { useGlobalContext } from "../Context/GlobalContext";
-import Layout from "../Layout/Layout";
+import LayoutWithoutFooter from "../Layout/LayoutWithoutFooter";
 
 const PaymentMethod = ({ history }) => {
   const [radioState, setRadioState] = useState("paymentNow");
@@ -13,7 +13,7 @@ const PaymentMethod = ({ history }) => {
     state: { paymentMethod },
   } = useGlobalContext();
   return (
-    <Layout>
+    <LayoutWithoutFooter>
       <section className="paymentMethod">
         <div className="container">
           <div className="paymentMethod__container">
@@ -72,7 +72,7 @@ const PaymentMethod = ({ history }) => {
           </div>
         </div>
       </section>
-    </Layout>
+    </LayoutWithoutFooter>
   );
 };
 export default PaymentMethod;
